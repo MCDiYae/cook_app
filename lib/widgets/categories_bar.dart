@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
 
-
 class CategoriesBar extends StatelessWidget {
   const CategoriesBar({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 80,
-      padding: const EdgeInsets.symmetric(vertical: 16.0),
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: const [
-          CategoryItem(icon: Icons.whatshot, label: 'Popular', selected: true),
-          CategoryItem(icon: Icons.local_pizza, label: 'Western'),
-          CategoryItem(icon: Icons.local_cafe, label: 'Drinks'),
-          CategoryItem(icon: Icons.local_dining, label: 'Local'),
-          CategoryItem(icon: Icons.cake, label: 'Dessert'),
-          // Ajoutez d'autres catégories ici si nécessaire
-        ],
+      margin: const EdgeInsets.all(12),
+      child: SizedBox(
+        height: 50,
+        child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: const [
+            CategoryItem(
+                icon: Icons.whatshot, label: 'Popular', selected: true),
+            CategoryItem(icon: Icons.local_pizza, label: 'Western'),
+            CategoryItem(icon: Icons.local_cafe, label: 'Drinks'),
+            CategoryItem(icon: Icons.local_dining, label: 'Local'),
+            CategoryItem(icon: Icons.cake, label: 'Dessert'),
+            // Ajoutez d'autres catégories ici si nécessaire
+          ],
+        ),
       ),
     );
   }
