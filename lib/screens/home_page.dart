@@ -4,28 +4,38 @@ import 'package:cook_app/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
+  
+   const MyHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  SafeArea(
+    return SafeArea(
       child: Scaffold(
-        body:const Column(
-           crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              // Search Bar
-              MySearchBar(),
-        
-              // Category Bar
-              CategoriesBar(),
-        
-              // Popular recipes Bar
-              RecipesBar(),
-            ],
+        body: const Padding(
+          padding: EdgeInsets.all(16.0),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                MySearchBar(),
+                SizedBox(height: 20),
+                CategoryBar(),
+                SizedBox(height: 20),
+                Text(
+                  'Popular Recipes',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 10),
+                RecipesBar(),
+              ],
+            ),
+          ),
         ),
-
         bottomNavigationBar: BottomNavigationBar(
-          items:const [
+          type: BottomNavigationBarType.fixed,
+          selectedItemColor: Theme.of(context).primaryColor,
+          unselectedItemColor: Colors.grey,
+          items: const [
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
               label: 'Home',

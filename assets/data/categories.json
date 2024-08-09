@@ -1,0 +1,42 @@
+[
+  {
+      "id": "1",
+      "name": "Western"
+  },
+  {
+      "id": "2",
+      "name": "Asian"
+  },
+  {
+      "id": "3",
+      "name": "Desserts"
+  },
+  {
+      "id": "4",
+      "name": "Italian"
+  },
+  {
+      "id": "5",
+      "name": "Mexican"
+  },
+  {
+      "id": "6",
+      "name": "Indian"
+  },
+  {
+      "id": "7",
+      "name": "Mediterranean"
+  },
+  {
+      "id": "8",
+      "name": "Middle Eastern"
+  },
+  {
+      "id": "9",
+      "name": "Vegetarian"
+  },
+  {
+      "id": "10",
+      "name": "Vegan"
+  }
+]

@@ -1,0 +1,202 @@
+[
+  {
+      "id": "1",
+      "title": "Spaghetti Carbonara",
+      "imageUrl": "assets/images/spaghetti_carbonara.jpg",
+      "categories": ["Italian", "Western"],
+      "ingredients": [
+          "Spaghetti",
+          "Eggs",
+          "Parmesan cheese",
+          "Pancetta",
+          "Black pepper"
+      ],
+      "steps": [
+          "Cook the spaghetti.",
+          "Fry the pancetta.",
+          "Mix eggs and cheese.",
+          "Combine spaghetti with pancetta and egg mixture.",
+          "Serve with black pepper."
+      ]
+  },
+  {
+      "id": "2",
+      "title": "Sushi",
+      "imageUrl": "assets/images/sushi.jpg",
+      "categories": ["Asian"],
+      "ingredients": [
+          "Sushi rice",
+          "Nori",
+          "Fish",
+          "Soy sauce",
+          "Wasabi"
+      ],
+      "steps": [
+          "Cook the sushi rice.",
+          "Prepare the fish.",
+          "Place rice on nori.",
+          "Add fish and roll.",
+          "Serve with soy sauce and wasabi."
+      ]
+  },
+  {
+      "id": "3",
+      "title": "Chocolate Cake",
+      "imageUrl": "assets/images/chocolate_cake.jpg",
+      "categories": ["Desserts"],
+      "ingredients": [
+          "Flour",
+          "Cocoa powder",
+          "Sugar",
+          "Eggs",
+          "Butter"
+      ],
+      "steps": [
+          "Preheat the oven.",
+          "Mix dry ingredients.",
+          "Add wet ingredients.",
+          "Pour into a baking pan.",
+          "Bake and cool."
+      ]
+  },
+  {
+      "id": "4",
+      "title": "Tacos",
+      "imageUrl": "assets/images/tacos.jpg",
+      "categories": ["Mexican"],
+      "ingredients": [
+          "Tortillas",
+          "Ground beef",
+          "Cheese",
+          "Lettuce",
+          "Tomatoes"
+      ],
+      "steps": [
+          "Cook the ground beef.",
+          "Prepare the toppings.",
+          "Warm the tortillas.",
+          "Assemble the tacos.",
+          "Serve with toppings."
+      ]
+  },
+  {
+      "id": "5",
+      "title": "Butter Chicken",
+      "imageUrl": "assets/images/butter_chicken.jpg",
+      "categories": ["Indian"],
+      "ingredients": [
+          "Chicken",
+          "Butter",
+          "Tomato sauce",
+          "Cream",
+          "Spices"
+      ],
+      "steps": [
+          "Marinate the chicken.",
+          "Cook the chicken.",
+          "Prepare the sauce.",
+          "Combine chicken with sauce.",
+          "Serve with rice."
+      ]
+  },
+  {
+      "id": "6",
+      "title": "Greek Salad",
+      "imageUrl": "assets/images/greek_salad.jpg",
+      "categories": ["Mediterranean"],
+      "ingredients": [
+          "Tomatoes",
+          "Cucumbers",
+          "Onions",
+          "Feta cheese",
+          "Olives"
+      ],
+      "steps": [
+          "Chop the vegetables.",
+          "Mix the vegetables.",
+          "Add feta cheese and olives.",
+          "Drizzle with olive oil.",
+          "Serve chilled."
+      ]
+  },
+  {
+      "id": "7",
+      "title": "Falafel",
+      "imageUrl": "assets/images/falafel.jpg",
+      "categories": ["Middle Eastern"],
+      "ingredients": [
+          "Chickpeas",
+          "Onions",
+          "Garlic",
+          "Parsley",
+          "Spices"
+      ],
+      "steps": [
+          "Soak the chickpeas.",
+          "Blend the ingredients.",
+          "Form into balls.",
+          "Fry the falafel.",
+          "Serve with pita."
+      ]
+  },
+  {
+      "id": "8",
+      "title": "Vegetarian Pizza",
+      "imageUrl": "assets/images/vegetarian_pizza.jpg",
+      "categories": ["Vegetarian"],
+      "ingredients": [
+          "Pizza dough",
+          "Tomato sauce",
+          "Cheese",
+          "Vegetables",
+          "Olive oil"
+      ],
+      "steps": [
+          "Preheat the oven.",
+          "Prepare the dough.",
+          "Add sauce and toppings.",
+          "Bake the pizza.",
+          "Serve hot."
+      ]
+  },
+  {
+      "id": "9",
+      "title": "Vegan Burger",
+      "imageUrl": "assets/images/vegan_burger.jpg",
+      "categories": ["Vegan"],
+      "ingredients": [
+          "Vegan patties",
+          "Buns",
+          "Lettuce",
+          "Tomatoes",
+          "Vegan cheese"
+      ],
+      "steps": [
+          "Cook the patties.",
+          "Prepare the toppings.",
+          "Assemble the burgers.",
+          "Serve with sides.",
+          "Enjoy."
+      ]
+  },
+  {
+      "id": "10",
+      "title": "Paella",
+      "imageUrl": "assets/images/paella.jpg",
+      "categories": ["Spanish"],
+      "ingredients": [
+          "Rice",
+          "Seafood",
+          "Chicken",
+          "Vegetables",
+          "Spices"
+      ],
+      "steps": [
+          "Cook the rice.",
+          "Prepare the seafood and chicken.",
+          "Cook the vegetables.",
+          "Combine all ingredients.",
+          "Serve hot."
+      ]
+  }
+]

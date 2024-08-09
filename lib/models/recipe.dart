@@ -5,7 +5,7 @@ class Recipe {
   final List<String> categories;
   final List<String> ingredients;
   final List<String> steps;
-  
+  bool isFavorite;
 
   Recipe(
       {required this.id,
@@ -13,7 +13,8 @@ class Recipe {
       required this.imageUrl,
       required this.categories,
       required this.ingredients,
-      required this.steps});
+      required this.steps,
+      this.isFavorite=false,});
 
   factory Recipe.fromJson(Map<String, dynamic> json, categories) {
     return Recipe(
@@ -24,5 +25,16 @@ class Recipe {
       ingredients: List<String>.from(json['ingredients']),
       steps: List<String>.from(json['steps']),
     );
+  }
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'title': title,
+      'imageUrl': imageUrl,
+      'categories': categories,
+      'ingredients': ingredients,
+      'steps': steps,
+      'isFavorite': isFavorite,
+    };
   }
 }
