@@ -23,7 +23,7 @@
       "id": "2",
       "title": "Sushi",
       "imageUrl": "assets/images/sushi.jpg",
-      "categories": ["Asian"],
+      "categories": ["Asian","trend"],
       "ingredients": [
           "Sushi rice",
           "Nori",
@@ -43,7 +43,7 @@
       "id": "3",
       "title": "Chocolate Cake",
       "imageUrl": "assets/images/chocolate_cake.jpg",
-      "categories": ["Desserts"],
+      "categories": ["Desserts","trend"],
       "ingredients": [
           "Flour",
           "Cocoa powder",
@@ -123,7 +123,7 @@
       "id": "7",
       "title": "Falafel",
       "imageUrl": "assets/images/falafel.jpg",
-      "categories": ["Middle Eastern"],
+      "categories": ["Middle Eastern","trend"],
       "ingredients": [
           "Chickpeas",
           "Onions",
@@ -143,7 +143,7 @@
       "id": "8",
       "title": "Vegetarian Pizza",
       "imageUrl": "assets/images/vegetarian_pizza.jpg",
-      "categories": ["Vegetarian"],
+      "categories": ["Vegetarian","trend"],
       "ingredients": [
           "Pizza dough",
           "Tomato sauce",

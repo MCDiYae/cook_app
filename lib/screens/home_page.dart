@@ -1,11 +1,10 @@
 import 'package:cook_app/widgets/categories_bar.dart';
-import 'package:cook_app/widgets/recipe_bar.dart';
 import 'package:cook_app/widgets/search_bar.dart';
+import 'package:cook_app/widgets/trend_recipes.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatelessWidget {
-  
-   const MyHomePage({super.key});
+  const MyHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +25,7 @@ class MyHomePage extends StatelessWidget {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 10),
-                RecipesBar(),
+                TrendRecipesGrid()
               ],
             ),
           ),
