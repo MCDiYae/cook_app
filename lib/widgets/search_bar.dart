@@ -24,12 +24,6 @@ class MySearchBar extends StatelessWidget {
               ),
             ),
           ),
-          IconButton(
-            icon: Icon(Icons.tune, color: Colors.grey[600]),
-            onPressed: () {
-              // Add filter functionality here later
-            },
-          ),
         ],
       ),
     );
