@@ -17,66 +17,60 @@ class RecipePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            expandedHeight: 200.0,
-            floating: false,
-            pinned: true,
-            flexibleSpace: FlexibleSpaceBar(
-              
-              background: Image.asset(
-                imageUrl,
-                fit: BoxFit.cover,
-              ),
-            ),
-            leading: IconButton(
-              icon: const Icon(Icons.arrow_back),
-              onPressed: () => Navigator.of(context).pop(),
-            ),
-            actions: [
-              IconButton(
-                icon: const Icon(Icons.favorite_border),
-                onPressed: () {
-                  // Handle adding to favorites
-                },
-              ),
-            ],
-          ),
-          SliverList(
-            delegate: SliverChildListDelegate([
-              _buildSection('Ingredients', ingredients),
-              _buildSection('Steps', steps),
-            ]),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        title: Text(title),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.favorite_border),
+            onPressed: () {
+              // TODO: Implement favorite functionality
+            },
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildSection(String title, List<String> items) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            title,
-            style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 10),
-          ...items.map((item) => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text('• ', style: TextStyle(fontSize: 18)),
-                    Expanded(child: Text(item, style: const TextStyle(fontSize: 16))),
-                  ],
-                ),
-              )),
-          const SizedBox(height: 20),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Image.asset(
+              imageUrl,
+              width: double.infinity,
+              height: 200,
+              fit: BoxFit.cover,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Ingredients',
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                  const SizedBox(height: 8),
+                  ...ingredients.map((ingredient) => Padding(
+                        padding: const EdgeInsets.only(bottom: 4),
+                        child: Text('• $ingredient'),
+                      )),
+                  const SizedBox(height: 16),
+                  Text(
+                    'Steps',
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                  const SizedBox(height: 8),
+                  ...steps.asMap().entries.map((entry) => Padding(
+                        padding: const EdgeInsets.only(bottom: 8),
+                        child: Text('${entry.key + 1}. ${entry.value}'),
+                      )),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
