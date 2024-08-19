@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 void main() {
   runApp(
     ChangeNotifierProvider(
-      create: (context) => RecipeProviders(),
+      create: (context) => RecipeProviderSearch(),
       child: const MyApp(),
     ),
   );
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<RecipeProviders>().loadRecipes();
+    context.read<RecipeProviderSearch>().loadRecipes();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "EazeeEats",

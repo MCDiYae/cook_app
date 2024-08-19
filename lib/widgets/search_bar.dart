@@ -23,12 +23,16 @@ class MySearchBar extends StatelessWidget {
                 border: InputBorder.none,
               ),
               onChanged: (query) {
-                context.read<RecipeProviders>().filterRecipes(query);
+                context.read<RecipeProviderSearch>().filterRecipes(query);
               },
             ),
           ),
           const SizedBox(width: 10),
-          Icon(Icons.search, color: Colors.grey[600]),
+          GestureDetector(
+              onTap: () {
+                FocusScope.of(context).unfocus(); //close keyborad
+              },
+              child: Icon(Icons.search, color: Colors.grey[600])),
         ],
       ),
     );
