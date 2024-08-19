@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:cook_app/screens/category_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
@@ -31,8 +32,19 @@ class CategoryBar extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Chip(
-                    label: Text(categories[index]['name']),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => CategoryPage(
+                                  category: categories[index]['name'],
+                                )),
+                      );
+                    },
+                    child: Chip(
+                      label: Text(categories[index]['name']),
+                    ),
                   ),
                 );
               },

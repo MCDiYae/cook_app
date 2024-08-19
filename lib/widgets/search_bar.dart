@@ -1,4 +1,6 @@
+import 'package:cook_app/utils/search_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class MySearchBar extends StatelessWidget {
   const MySearchBar({super.key});
@@ -20,6 +22,9 @@ class MySearchBar extends StatelessWidget {
                 hintStyle: TextStyle(color: Colors.grey[500]),
                 border: InputBorder.none,
               ),
+              onChanged: (query) {
+                context.read<RecipeProviders>().filterRecipes(query);
+              },
             ),
           ),
           const SizedBox(width: 10),

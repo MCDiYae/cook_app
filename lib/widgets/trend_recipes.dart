@@ -24,6 +24,7 @@ class TrendRecipesGrid extends StatelessWidget {
         } else if (snapshot.hasError) {
           return const Text('Error loading recipes');
         } else {
+          
           final recipes = snapshot.data!;
           final trendRecipes = recipes
               .where((recipe) => recipe['categories'].contains('trend'))

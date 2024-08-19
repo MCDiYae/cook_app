@@ -35,8 +35,7 @@ class MyHomePage extends StatelessWidget {
           selectedItemColor: Theme.of(context).primaryColor,
           unselectedItemColor: Colors.grey,
           items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
+            BottomNavigationBarItem(              icon: Icon(Icons.home),
               label: 'Home',
             ),
             BottomNavigationBarItem(
