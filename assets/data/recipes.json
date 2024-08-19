@@ -183,7 +183,7 @@
       "id": "10",
       "title": "Paella",
       "imageUrl": "assets/images/paella.jpg",
-      "categories": ["Spanish"],
+      "categories": ["Spanish","trend"],
       "ingredients": [
           "Rice",
           "Seafood",

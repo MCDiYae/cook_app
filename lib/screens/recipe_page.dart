@@ -17,18 +17,37 @@ class RecipePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.of(context).pop(),
+        backgroundColor: Colors.transparent,
+        leading: Container(
+          margin: const EdgeInsets.all(8.0), // Add some margin
+          decoration: const BoxDecoration(
+            color: Colors.yellow, // Background color for the icon
+            shape: BoxShape.circle, // Circular shape
+          ),
+          child: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            color: Colors.black,
+            onPressed: () => Navigator.of(context).pop(),
+          ),
         ),
-        title: Text(title),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.favorite_border),
-            onPressed: () {
-              // TODO: Implement favorite functionality
-            },
+          Container(
+            margin: const EdgeInsets.all(8.0), // Add some margin
+            decoration: const BoxDecoration(
+              color: Colors.white, // Background color for the icon
+              shape: BoxShape.circle, // Circular shape
+            ),
+            child: IconButton(
+              icon: const Icon(
+                Icons.favorite_border,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                // TODO: Implement bookmark functionality
+              },
+            ),
           ),
         ],
       ),
@@ -39,7 +58,7 @@ class RecipePage extends StatelessWidget {
             Image.asset(
               imageUrl,
               width: double.infinity,
-              height: 200,
+              height: 300,
               fit: BoxFit.cover,
             ),
             Padding(
@@ -47,14 +66,37 @@ class RecipePage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Center(
+                    child: Text(
+                      title,
+                      style: Theme.of(context).textTheme.headlineLarge,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
                   Text(
                     'Ingredients',
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                   const SizedBox(height: 8),
                   ...ingredients.map((ingredient) => Padding(
-                        padding: const EdgeInsets.only(bottom: 4),
-                        child: Text('• $ingredient'),
+                        padding: const EdgeInsets.only(left: 8, bottom: 4),
+                        child: Row(
+                          children: [
+                            const Icon(Icons.circle,
+                                size: 8, color: Colors.yellow),
+                            const SizedBox(width: 8),
+                            Text(
+                              ingredient,
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
                       )),
                   const SizedBox(height: 16),
                   Text(
@@ -63,8 +105,11 @@ class RecipePage extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   ...steps.asMap().entries.map((entry) => Padding(
-                        padding: const EdgeInsets.only(bottom: 8),
-                        child: Text('${entry.key + 1}. ${entry.value}'),
+                        padding: const EdgeInsets.only(left: 8, bottom: 4),
+                        child: Text(
+                          '${entry.key + 1}. ${entry.value}',
+                          style: const TextStyle(fontSize: 16),
+                        ),
                       )),
                 ],
               ),
