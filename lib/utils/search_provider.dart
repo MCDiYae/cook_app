@@ -11,7 +11,8 @@ class RecipeProviderSearch extends ChangeNotifier {
   String get searchQuery => _searchQuery;
 
   Future<void> loadRecipes() async {
-    final String response = await rootBundle.loadString('assets/data/recipes.json');
+    final String response =
+        await rootBundle.loadString('assets/data/recipes.json');
     _allRecipes = json.decode(response);
     _filteredRecipes = _allRecipes;
     notifyListeners();
@@ -22,12 +23,14 @@ class RecipeProviderSearch extends ChangeNotifier {
     if (query.isEmpty) {
       _filteredRecipes = _allRecipes;
     } else {
-      _filteredRecipes = _allRecipes.where((recipe) =>
-        recipe['title'].toLowerCase().contains(query.toLowerCase()) ||
-        (recipe['categories'] as List<dynamic>).any((category) => 
-          category.toString().toLowerCase().contains(query.toLowerCase())
-        )
-      ).toList();
+      _filteredRecipes = _allRecipes
+          .where((recipe) =>
+              recipe['title'].toLowerCase().contains(query.toLowerCase()) ||
+              (recipe['categories'] as List<dynamic>).any((category) => category
+                  .toString()
+                  .toLowerCase()
+                  .contains(query.toLowerCase())))
+          .toList();
     }
     notifyListeners();
   }
