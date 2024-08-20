@@ -52,6 +52,7 @@ class CategoryPage extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) => RecipePage(
+                          id: recipe['id'],
                           title: recipe['title'],
                           imageUrl: recipe['imageUrl'],
                           ingredients: List<String>.from(recipe['ingredients']),

@@ -1,6 +1,9 @@
+import 'package:cook_app/utils/favorite_service.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class RecipePage extends StatelessWidget {
+  final String id; // Add an ID to identify the recipe
   final String title;
   final String imageUrl;
   final List<String> ingredients;
@@ -8,6 +11,7 @@ class RecipePage extends StatelessWidget {
 
   const RecipePage({
     super.key,
+    required this.id,
     required this.title,
     required this.imageUrl,
     required this.ingredients,
@@ -21,10 +25,10 @@ class RecipePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         leading: Container(
-          margin: const EdgeInsets.all(8.0), // Add some margin
+          margin: const EdgeInsets.all(8.0),
           decoration: const BoxDecoration(
-            color: Colors.yellow, // Background color for the icon
-            shape: BoxShape.circle, // Circular shape
+            color: Colors.yellow,
+            shape: BoxShape.circle,
           ),
           child: IconButton(
             icon: const Icon(Icons.arrow_back),
@@ -33,21 +37,26 @@ class RecipePage extends StatelessWidget {
           ),
         ),
         actions: [
-          Container(
-            margin: const EdgeInsets.all(8.0), // Add some margin
-            decoration: const BoxDecoration(
-              color: Colors.white, // Background color for the icon
-              shape: BoxShape.circle, // Circular shape
-            ),
-            child: IconButton(
-              icon: const Icon(
-                Icons.favorite_border,
-                color: Colors.black,
-              ),
-              onPressed: () {
-                // TODO: Implement bookmark functionality
-              },
-            ),
+          Consumer<FavoritesProvider>(
+            builder: (context, favoritesProvider, child) {
+              final isFavorite = favoritesProvider.isFavorite(id);
+              return Container(
+                margin: const EdgeInsets.all(8.0),
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                ),
+                child: IconButton(
+                  icon: Icon(
+                    isFavorite ? Icons.favorite : Icons.favorite_border,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {
+                    favoritesProvider.toggleFavoriteStatus(id);
+                  },
+                ),
+              );
+            },
           ),
         ],
       ),
@@ -73,9 +82,7 @@ class RecipePage extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  const SizedBox(
-                    height: 16,
-                  ),
+                  const SizedBox(height: 16),
                   Text(
                     'Ingredients',
                     style: Theme.of(context).textTheme.titleLarge,
