@@ -8,6 +8,7 @@ class RecipePage extends StatelessWidget {
   final String imageUrl;
   final List<String> ingredients;
   final List<String> steps;
+  
 
   const RecipePage({
     super.key,
@@ -52,7 +53,7 @@ class RecipePage extends StatelessWidget {
                     color: Colors.black,
                   ),
                   onPressed: () {
-                    favoritesProvider.toggleFavoriteStatus(id);
+                    favoritesProvider.toggleFavoriteStatut(id);
                   },
                 ),
               );

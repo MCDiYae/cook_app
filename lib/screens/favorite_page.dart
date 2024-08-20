@@ -8,22 +8,30 @@ class FavoritesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final favoritesProvider = Provider.of<FavoritesProvider>(context);
-    final favoriteRecipeIds = favoritesProvider.favoriteRecipeIds;
+    //final favoriteRecipeIds = favoritesProvider.favoriteRecipeIds;
+    final favoriteRecipes = favoritesProvider.favoriteRecipes;
+
+    if (favoriteRecipes.isEmpty) {
+      return const Center(child: Text('No favorite recipes found'));
+    }
 
     return ListView.builder(
-      itemCount: favoriteRecipeIds.length,
+      itemCount: favoriteRecipes.length,
       itemBuilder: (context, index) {
-        final recipeId = favoriteRecipeIds[index];
-        // Fetch the recipe details using the recipeId
-        // For now, just display the recipeId
+        final recipe = favoriteRecipes[index];
+
         return ListTile(
-          title: Text('Recipe ID: $recipeId'),
+          leading: Image.asset(recipe.imageUrl, width: 50, height: 50),
+          title: Text(recipe.title),
           trailing: IconButton(
             icon: const Icon(Icons.remove_circle),
             onPressed: () {
-              favoritesProvider.toggleFavoriteStatus(recipeId);
+              favoritesProvider.toggleFavoriteStatus(recipe);
             },
           ),
+          onTap: () {
+            
+          },
         );
       },
     );
