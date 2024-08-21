@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
+import 'package:cook_app/models/recipe.dart'; // Importez votre modèle Recipe
 import 'package:cook_app/screens/recipe_page.dart';
 import 'package:cook_app/utils/search_provider.dart';
 import 'package:cook_app/widgets/recipe_card.dart';
-import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class TrendRecipesGrid extends StatelessWidget {
@@ -18,6 +19,7 @@ class TrendRecipesGrid extends StatelessWidget {
 
     final trendRecipes = recipes
         .where((recipe) => recipe['categories'].contains('trend'))
+        .map((json) => Recipe.fromJson(json)) // Conversion JSON en Recipe
         .toList();
 
     return GridView.builder(
@@ -38,18 +40,14 @@ class TrendRecipesGrid extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) => RecipePage(
-                  id: recipe['id'],
-                  title: recipe['title'],
-                  imageUrl: recipe['imageUrl'],
-                  ingredients: List<String>.from(recipe['ingredients']),
-                  steps: List<String>.from(recipe['steps']),
+                  recipe: recipe, // Passez l'objet Recipe ici
                 ),
               ),
             );
           },
           child: RecipeCard(
-            title: recipe['title'],
-            imageUrl: recipe['imageUrl'],
+            title: recipe.title,
+            imageUrl: recipe.imageUrl,
           ),
         );
       },

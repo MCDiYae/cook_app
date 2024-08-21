@@ -1,9 +1,8 @@
 import 'package:cook_app/screens/favorite_page.dart';
-import 'package:flutter/material.dart';
 import 'package:cook_app/widgets/categories_bar.dart';
 import 'package:cook_app/widgets/search_bar.dart';
 import 'package:cook_app/widgets/trend_recipes.dart';
-
+import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -18,7 +17,7 @@ class _MyHomePageState extends State<MyHomePage> {
   // List of pages to display
   final List<Widget> _pages = [
     const HomeContent(),
-    const FavoritesPage(),
+    const FavoritePage(),
   ];
 
   void _onItemTapped(int index) {

@@ -1,23 +1,52 @@
-import 'package:cook_app/utils/favorite_service.dart';
+import 'package:cook_app/models/recipe.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+// Your Recipe model file
 
-class RecipePage extends StatelessWidget {
-  final String id; // Add an ID to identify the recipe
-  final String title;
-  final String imageUrl;
-  final List<String> ingredients;
-  final List<String> steps;
-  
+class RecipePage extends StatefulWidget {
+  final Recipe recipe;
 
-  const RecipePage({
-    super.key,
-    required this.id,
-    required this.title,
-    required this.imageUrl,
-    required this.ingredients,
-    required this.steps,
-  });
+  const RecipePage({super.key, required this.recipe});
+
+  @override
+  State <RecipePage> createState() => _RecipePageState();
+}
+
+class _RecipePageState extends State<RecipePage> {
+  bool isFavorite = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadFavoriteStatus();
+  }
+
+  Future<void> _loadFavoriteStatus() async {
+    final prefs = await SharedPreferences.getInstance();
+    final List<String>? favoriteRecipes =
+        prefs.getStringList('favoriteRecipes');
+    if (favoriteRecipes != null) {
+      setState(() {
+        isFavorite = favoriteRecipes.contains(widget.recipe.id);
+      });
+    }
+  }
+
+  Future<void> _toggleFavorite() async {
+    final prefs = await SharedPreferences.getInstance();
+    final List<String> favoriteRecipes = prefs.getStringList('favoriteRecipes') ?? [];
+
+    setState(() {
+      if (isFavorite) {
+        favoriteRecipes.remove(widget.recipe.id);
+      } else {
+        favoriteRecipes.add(widget.recipe.id);
+      }
+      isFavorite = !isFavorite;
+    });
+
+    await prefs.setStringList('favoriteRecipes', favoriteRecipes);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,26 +67,19 @@ class RecipePage extends StatelessWidget {
           ),
         ),
         actions: [
-          Consumer<FavoritesProvider>(
-            builder: (context, favoritesProvider, child) {
-              final isFavorite = favoritesProvider.isFavorite(id);
-              return Container(
-                margin: const EdgeInsets.all(8.0),
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.circle,
-                ),
-                child: IconButton(
-                  icon: Icon(
-                    isFavorite ? Icons.favorite : Icons.favorite_border,
-                    color: Colors.black,
-                  ),
-                  onPressed: () {
-                    favoritesProvider.toggleFavoriteStatut(id);
-                  },
-                ),
-              );
-            },
+          Container(
+            margin: const EdgeInsets.all(8.0),
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+            ),
+            child: IconButton(
+              icon: Icon(
+                isFavorite ? Icons.favorite : Icons.favorite_border,
+                color: Colors.red,
+              ),
+              onPressed: _toggleFavorite,
+            ),
           ),
         ],
       ),
@@ -66,7 +88,7 @@ class RecipePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.asset(
-              imageUrl,
+              widget.recipe.imageUrl,
               width: double.infinity,
               height: 300,
               fit: BoxFit.cover,
@@ -78,7 +100,7 @@ class RecipePage extends StatelessWidget {
                 children: [
                   Center(
                     child: Text(
-                      title,
+                      widget.recipe.title,
                       style: Theme.of(context).textTheme.headlineLarge,
                       textAlign: TextAlign.center,
                     ),
@@ -89,7 +111,7 @@ class RecipePage extends StatelessWidget {
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                   const SizedBox(height: 8),
-                  ...ingredients.map((ingredient) => Padding(
+                  ...widget.recipe.ingredients.map((ingredient) => Padding(
                         padding: const EdgeInsets.only(left: 8, bottom: 4),
                         child: Row(
                           children: [
@@ -112,7 +134,7 @@ class RecipePage extends StatelessWidget {
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                   const SizedBox(height: 8),
-                  ...steps.asMap().entries.map((entry) => Padding(
+                  ...widget.recipe.steps.asMap().entries.map((entry) => Padding(
                         padding: const EdgeInsets.only(left: 8, bottom: 4),
                         child: Text(
                           '${entry.key + 1}. ${entry.value}',

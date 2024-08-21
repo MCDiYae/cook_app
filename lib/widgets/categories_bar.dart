@@ -19,7 +19,7 @@ class CategoryBar extends StatelessWidget {
       future: _loadCategories(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const CircularProgressIndicator();
+          return const Center(child: CircularProgressIndicator());
         } else if (snapshot.hasError) {
           return const Text('Error loading categories');
         } else {

@@ -1,20 +1,9 @@
-import 'package:hive/hive.dart';
-
-part 'recipe.g.dart';
-
-@HiveType(typeId: 0)
 class Recipe {
-  @HiveField(0)
   final String id;
-  @HiveField(1)
   final String title;
-  @HiveField(2)
   final String imageUrl;
-  @HiveField(3)
   final List<String> categories;
-  @HiveField(4)
   final List<String> ingredients;
-  @HiveField(5)
   final List<String> steps;
 
   Recipe({
@@ -36,7 +25,6 @@ class Recipe {
       steps: List<String>.from(json['steps']),
     );
   }
-
   Map<String, dynamic> toJson() {
     return {
       'id': id,

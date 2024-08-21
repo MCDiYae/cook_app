@@ -1,39 +1,30 @@
-import 'package:cook_app/models/recipe.dart';
-import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 
-class FavoritesProvider with ChangeNotifier {
-  final Box _favoritesBox = Hive.box('favorites');
+import 'package:shared_preferences/shared_preferences.dart';
 
-  /// Check if a recipe is marked as favorite
-  bool isFavorite(String recipeId) {
-    return _favoritesBox.containsKey(recipeId);
-  }
+class FavoritesService {
+  static const String _key = 'favorite_recipes';
 
-  /// Toggle the favorite status of a recipe
-  void toggleFavoriteStatut(String recipeId) {
-    if (isFavorite(recipeId)) {
-      _favoritesBox.delete(recipeId);
+  Future<void> toggleFavorite(String recipeId) async {
+    final prefs = await SharedPreferences.getInstance();
+    final favorites = prefs.getStringList(_key) ?? [];
+    
+    if (favorites.contains(recipeId)) {
+      favorites.remove(recipeId);
     } else {
-      _favoritesBox.put(recipeId, true);
+      favorites.add(recipeId);
     }
-    notifyListeners();
+    
+    await prefs.setStringList(_key, favorites);
   }
 
-  void toggleFavoriteStatus(Recipe recipe) {
-       if (isFavorite(recipe.id)) {
-         _favoritesBox.delete(recipe.id);
-       } else {
-         _favoritesBox.put(recipe.id, recipe);
-       }
-       notifyListeners();
-     }
-
-  /// Get all favorite recipe IDs
-  List<String> get favoriteRecipeIds {
-    return _favoritesBox.keys.cast<String>().toList();
+  Future<bool> isFavorite(String recipeId) async {
+    final prefs = await SharedPreferences.getInstance();
+    final favorites = prefs.getStringList(_key) ?? [];
+    return favorites.contains(recipeId);
   }
-  List<Recipe> get favoriteRecipes {
-    return _favoritesBox.values.cast<Recipe>().toList();
+
+  Future<List<String>> getFavorites() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getStringList(_key) ?? [];
   }
 }
