@@ -1,12 +1,9 @@
-import 'dart:convert';
 import 'package:cook_app/utils/favorite_service.dart';
 import 'package:cook_app/widgets/recipe_list.dart';
 import 'package:flutter/material.dart';
 
 import 'package:cook_app/models/recipe.dart';
 import 'package:cook_app/screens/recipe_page.dart';
-
-
 
 class FavoritePage extends StatefulWidget {
   const FavoritePage({super.key});
@@ -22,7 +19,18 @@ class _FavoritePageState extends State<FavoritePage> {
   @override
   void initState() {
     super.initState();
-    _favoriteRecipesFuture = _favoriteService.loadFavoriteRecipes();
+    _loadFavoriteRecipes();
+  }
+
+  void _loadFavoriteRecipes() {
+    setState(() {
+      _favoriteRecipesFuture = _favoriteService.loadFavoriteRecipes();
+    });
+  }
+
+  Future<void> _removeFromFavorites(Recipe recipe) async {
+    await _favoriteService.removeFromFavorites(recipe.id);
+    _loadFavoriteRecipes(); // Reload the list after removing
   }
 
   @override
@@ -57,6 +65,9 @@ class _FavoritePageState extends State<FavoritePage> {
         return RecipeListItem(
           recipe: recipe,
           onTap: () => _navigateToRecipePage(recipe),
+          onRemove: () {
+            _removeFromFavorites(recipe);
+          },
         );
       },
     );

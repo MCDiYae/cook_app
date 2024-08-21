@@ -3,7 +3,6 @@ import 'package:cook_app/models/recipe.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
-
 class FavoriteRecipeService {
   static const String _favoriteRecipesKey = 'favoriteRecipes';
 
@@ -17,6 +16,7 @@ class FavoriteRecipeService {
           .where((recipe) => favoriteRecipeIds.contains(recipe.id))
           .toList();
     } catch (e) {
+      // ignore: avoid_print
       print('Error loading favorite recipes: $e');
       return [];
     }
@@ -30,6 +30,7 @@ class FavoriteRecipeService {
 
       return data.map<Recipe>((json) => Recipe.fromJson(json)).toList();
     } catch (e) {
+      // ignore: avoid_print
       print('Error fetching all recipes: $e');
       return [];
     }
@@ -53,5 +54,12 @@ class FavoriteRecipeService {
 
     await prefs.setStringList(_favoriteRecipesKey, favoriteRecipeIds);
     return favoriteRecipeIds.contains(recipeId);
+  }
+
+  Future<void> removeFromFavorites(String recipeId) async {
+    final prefs = await SharedPreferences.getInstance();
+    final favoriteRecipeIds = prefs.getStringList(_favoriteRecipesKey) ?? [];
+    favoriteRecipeIds.remove(recipeId);
+    await prefs.setStringList(_favoriteRecipesKey, favoriteRecipeIds);
   }
 }

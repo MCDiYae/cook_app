@@ -1,15 +1,16 @@
 import 'package:cook_app/models/recipe.dart';
 import 'package:flutter/material.dart';
 
-
 class RecipeListItem extends StatelessWidget {
   final Recipe recipe;
   final VoidCallback onTap;
+  final VoidCallback onRemove;
 
   const RecipeListItem({
     super.key,
     required this.recipe,
     required this.onTap,
+    required this.onRemove,
   });
 
   @override
@@ -36,6 +37,10 @@ class RecipeListItem extends StatelessWidget {
         style: const TextStyle(fontSize: 12),
       ),
       onTap: onTap,
+      trailing: IconButton(
+        icon: const Icon(Icons.remove_circle_outline, color: Colors.red),
+        onPressed: onRemove,
+      ),
     );
   }
 }
