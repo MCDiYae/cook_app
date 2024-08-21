@@ -1,30 +1,57 @@
-
+import 'dart:convert';
+import 'package:cook_app/models/recipe.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
-class FavoritesService {
-  static const String _key = 'favorite_recipes';
 
-  Future<void> toggleFavorite(String recipeId) async {
-    final prefs = await SharedPreferences.getInstance();
-    final favorites = prefs.getStringList(_key) ?? [];
-    
-    if (favorites.contains(recipeId)) {
-      favorites.remove(recipeId);
-    } else {
-      favorites.add(recipeId);
+class FavoriteRecipeService {
+  static const String _favoriteRecipesKey = 'favoriteRecipes';
+
+  Future<List<Recipe>> loadFavoriteRecipes() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final favoriteRecipeIds = prefs.getStringList(_favoriteRecipesKey) ?? [];
+      final allRecipes = await _fetchAllRecipes();
+
+      return allRecipes
+          .where((recipe) => favoriteRecipeIds.contains(recipe.id))
+          .toList();
+    } catch (e) {
+      print('Error loading favorite recipes: $e');
+      return [];
     }
-    
-    await prefs.setStringList(_key, favorites);
+  }
+
+  Future<List<Recipe>> _fetchAllRecipes() async {
+    try {
+      final String response =
+          await rootBundle.loadString('assets/data/recipes.json');
+      final List<dynamic> data = json.decode(response);
+
+      return data.map<Recipe>((json) => Recipe.fromJson(json)).toList();
+    } catch (e) {
+      print('Error fetching all recipes: $e');
+      return [];
+    }
   }
 
   Future<bool> isFavorite(String recipeId) async {
     final prefs = await SharedPreferences.getInstance();
-    final favorites = prefs.getStringList(_key) ?? [];
-    return favorites.contains(recipeId);
+    final favoriteRecipeIds = prefs.getStringList(_favoriteRecipesKey) ?? [];
+    return favoriteRecipeIds.contains(recipeId);
   }
 
-  Future<List<String>> getFavorites() async {
+  Future<bool> toggleFavorite(String recipeId) async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.getStringList(_key) ?? [];
+    final favoriteRecipeIds = prefs.getStringList(_favoriteRecipesKey) ?? [];
+
+    if (favoriteRecipeIds.contains(recipeId)) {
+      favoriteRecipeIds.remove(recipeId);
+    } else {
+      favoriteRecipeIds.add(recipeId);
+    }
+
+    await prefs.setStringList(_favoriteRecipesKey, favoriteRecipeIds);
+    return favoriteRecipeIds.contains(recipeId);
   }
 }
