@@ -198,5 +198,180 @@
           "Combine all ingredients.",
           "Serve hot."
       ]
-  }
+  },
+  {
+    "id": "11",
+    "title": "Beef Wellington",
+    "imageUrl": "assets/images/beef_wellington.jpg",
+    "categories": ["Western"],
+    "ingredients": [
+        "Beef tenderloin",
+        "Mushrooms",
+        "Shallots",
+        "Garlic",
+        "Prosciutto",
+        "Puff pastry",
+        "Dijon mustard",
+        "Egg yolk"
+    ],
+    "steps": [
+        "Sear the beef tenderloin on all sides and let it cool.",
+        "Prepare the mushroom duxelles by sautéing mushrooms, shallots, and garlic until dry.",
+        "Spread Dijon mustard over the beef.",
+        "Wrap the beef with prosciutto and the mushroom mixture.",
+        "Encase the beef in puff pastry and brush with egg yolk.",
+        "Bake at 400°F (200°C) until the pastry is golden brown."
+    ]
+},
+{
+    "id": "12",
+    "title": "Chicken Pot Pie",
+    "imageUrl": "assets/images/chicken_pot_pie.jpg",
+    "categories": ["Western"],
+    "ingredients": [
+        "Chicken breast",
+        "Carrots",
+        "Peas",
+        "Potatoes",
+        "Onion",
+        "Butter",
+        "Flour",
+        "Chicken broth",
+        "Milk",
+        "Puff pastry"
+    ],
+    "steps": [
+        "Cook the chicken and cut it into cubes.",
+        "Sauté carrots, peas, potatoes, and onion in butter.",
+        "Stir in flour to create a roux, then add chicken broth and milk to make a sauce.",
+        "Mix the chicken with the sauce and vegetables.",
+        "Pour the mixture into a baking dish and cover with puff pastry.",
+        "Bake until the pastry is golden brown."
+    ]
+},
+{
+    "id": "13",
+    "title": "Shepherd's Pie",
+    "imageUrl": "assets/images/shepherds_pie.jpg",
+    "categories": ["Western"],
+    "ingredients": [
+        "Ground lamb",
+        "Onions",
+        "Carrots",
+        "Peas",
+        "Tomato paste",
+        "Worcestershire sauce",
+        "Beef broth",
+        "Mashed potatoes",
+        "Butter"
+    ],
+    "steps": [
+        "Cook ground lamb with onions, carrots, and peas until browned.",
+        "Stir in tomato paste, Worcestershire sauce, and beef broth.",
+        "Simmer until thickened.",
+        "Spread the meat mixture in a baking dish.",
+        "Top with mashed potatoes and butter.",
+        "Bake until the top is golden."
+    ]
+},
+{
+    "id": "14",
+    "title": "Chicken Teriyaki",
+    "imageUrl": "assets/images/chicken_teriyaki.jpg",
+    "categories": ["Asian"],
+    "ingredients": [
+        "Chicken thighs",
+        "Soy sauce",
+        "Mirin",
+        "Sugar",
+        "Ginger",
+        "Garlic",
+        "Sesame seeds"
+    ],
+    "steps": [
+        "Marinate the chicken in a mixture of soy sauce, mirin, sugar, ginger, and garlic.",
+        "Cook the chicken in a skillet until browned.",
+        "Pour the marinade over the chicken and reduce until thickened.",
+        "Serve the chicken with rice.",
+        "Garnish with sesame seeds and chopped green onions."
+    ]
+},
+{
+    "id": "15",
+    "title": "Pad Thai",
+    "imageUrl": "assets/images/pad_thai.jpg",
+    "categories": ["Asian"],
+    "ingredients": [
+        "Rice noodles",
+        "Shrimp",
+        "Eggs",
+        "Bean sprouts",
+        "Tofu",
+        "Peanuts",
+        "Tamarind paste",
+        "Fish sauce",
+        "Palm sugar",
+        "Lime"
+    ],
+    "steps": [
+        "Soak the rice noodles in warm water until soft.",
+        "Stir-fry shrimp and tofu in a hot pan.",
+        "Push to the side and scramble the eggs.",
+        "Add noodles and mix with tamarind paste, fish sauce, and palm sugar.",
+        "Toss in bean sprouts and chopped peanuts.",
+        "Serve with lime wedges."
+    ]
+},
+
+{
+    "id": "16",
+    "title": "Cheesecake",
+    "imageUrl": "assets/images/cheesecake.jpg",
+    "categories": ["Desserts"],
+    "ingredients": [
+        "Cream cheese",
+        "Graham crackers",
+        "Sugar",
+        "Butter",
+        "Eggs",
+        "Vanilla extract",
+        "Sour cream",
+        "Lemon zest"
+    ],
+    "steps": [
+        "Prepare the graham cracker crust and press it into a springform pan.",
+        "Mix cream cheese, sugar, eggs, vanilla, sour cream, and lemon zest until smooth.",
+        "Pour the filling over the crust.",
+        "Bake in a water bath at 325°F (160°C) for 1 hour.",
+        "Let it cool, then refrigerate for several hours before serving."
+    ]
+},
+{
+    "id": "17",
+    "title": "Tiramisu",
+    "imageUrl": "assets/images/tiramisu.jpg",
+    "categories": ["Desserts"],
+    "ingredients": [
+        "Mascarpone cheese",
+        "Ladyfingers",
+        "Espresso",
+        "Cocoa powder",
+        "Eggs",
+        "Sugar",
+        "Marsala wine",
+        "Heavy cream"
+    ],
+    "steps": [
+        "Whisk egg yolks and sugar until pale, then mix in mascarpone and Marsala wine.",
+        "Whip the cream and fold it into the mascarpone mixture.",
+        "Dip ladyfingers in espresso and layer them in a dish.",
+        "Spread the mascarpone mixture over the ladyfingers.",
+        "Repeat layers and chill for at least 4 hours.",
+        "Dust with cocoa powder before serving."
+    ]
+}
+
+
+
+
 ]
