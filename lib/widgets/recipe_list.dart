@@ -41,10 +41,7 @@ class RecipeListItem extends StatelessWidget {
                   children: [
                     Text(
                       recipe.title,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
                     const SizedBox(height: 8),
                     Text(

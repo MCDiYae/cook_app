@@ -12,10 +12,16 @@ ThemeData buildAppTheme() {
           color: Colors.white, fontSize: 20), // White text for contrast
     ),
     textTheme: const TextTheme(
-      bodyLarge:
-          TextStyle(color: Colors.brown, fontSize: 16), // Use brown for text
-      bodyMedium: TextStyle(
-          color: Colors.green, fontSize: 14), // Use green for secondary text
+      titleLarge: TextStyle(
+          color: Colors.orange, fontSize: 20, fontWeight: FontWeight.bold),
+      titleMedium: TextStyle(
+          color: Colors.green, fontSize: 16, fontWeight: FontWeight.bold),
+      bodyLarge: TextStyle(
+          color: Colors.brown,
+          fontSize: 16,
+          fontWeight: FontWeight.bold), // Use brown for text
+      bodyMedium: TextStyle(color: Colors.grey, fontSize: 14),
+      // Use green for secondary text
     ),
     iconTheme: const IconThemeData(color: Colors.red), // Use red for icons
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(

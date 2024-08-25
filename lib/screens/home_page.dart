@@ -58,22 +58,22 @@ class HomeContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(16.0),
+    return  Padding(
+      padding: const EdgeInsets.all(16.0),
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            MySearchBar(),
-            SizedBox(height: 20),
-            CategoryBar(),
-            SizedBox(height: 20),
+            const MySearchBar(),
+            const SizedBox(height: 20),
+            const CategoryBar(),
+            const SizedBox(height: 20),
             Text(
               'Popular Recipes',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: Theme.of(context).textTheme.titleLarge,
             ),
-            SizedBox(height: 10),
-            TrendRecipesGrid(),
+            const SizedBox(height: 10),
+            const TrendRecipesGrid(),
           ],
         ),
       ),

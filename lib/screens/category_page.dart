@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:cook_app/models/recipe.dart';
+import 'package:cook_app/widgets/recipe_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'recipe_page.dart';
@@ -57,29 +58,7 @@ class CategoryPage extends StatelessWidget {
                       ),
                     );
                   },
-                  child: Card(
-                    clipBehavior: Clip.antiAlias,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: Image.asset(
-                            recipe.imageUrl,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            recipe.title,
-                            style: Theme.of(context).textTheme.titleMedium,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  child: RecipeCard(title: recipe.title, imageUrl: recipe.imageUrl)
                 );
               },
             );

@@ -3,8 +3,6 @@ import 'package:cook_app/utils/favorite_service.dart';
 import 'package:cook_app/widgets/favorite_button.dart';
 import 'package:flutter/material.dart';
 
-
-
 class RecipePage extends StatefulWidget {
   final Recipe recipe;
 
@@ -65,7 +63,7 @@ class _RecipePageState extends State<RecipePage> {
     return Container(
       margin: const EdgeInsets.all(8.0),
       decoration: const BoxDecoration(
-        color: Colors.yellow,
+        color: Colors.orange,
         shape: BoxShape.circle,
       ),
       child: IconButton(
@@ -123,7 +121,7 @@ class _RecipePageState extends State<RecipePage> {
       children: [
         Text(
           'Ingredients',
-          style: Theme.of(context).textTheme.titleLarge,
+          style: Theme.of(context).textTheme.titleMedium,
         ),
         const SizedBox(height: 8),
         ...widget.recipe.ingredients.map(_buildIngredientItem),
@@ -136,7 +134,7 @@ class _RecipePageState extends State<RecipePage> {
       padding: const EdgeInsets.only(left: 8, bottom: 4),
       child: Row(
         children: [
-          const Icon(Icons.circle, size: 8, color: Colors.yellow),
+          const Icon(Icons.circle, size: 8, color: Colors.orange),
           const SizedBox(width: 8),
           Text(
             ingredient,
@@ -156,7 +154,7 @@ class _RecipePageState extends State<RecipePage> {
       children: [
         Text(
           'Steps',
-          style: Theme.of(context).textTheme.titleLarge,
+          style: Theme.of(context).textTheme.titleMedium,
         ),
         const SizedBox(height: 8),
         ...widget.recipe.steps.asMap().entries.map(_buildStepItem),
