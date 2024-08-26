@@ -2,36 +2,32 @@ import 'package:flutter/material.dart';
 
 ThemeData buildAppTheme() {
   return ThemeData(
-    primaryColor: Colors.orange, // Updated primary color to orange
-    scaffoldBackgroundColor: Colors.white, // Retain white for background
+    primaryColor: Colors.orange,
+    scaffoldBackgroundColor: Colors.white,
     appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.orange, // Use primary color for app bar
+      backgroundColor: Colors.orange,
       elevation: 0,
-      iconTheme: IconThemeData(color: Colors.white), // White icons for contrast
-      titleTextStyle: TextStyle(
-          color: Colors.white, fontSize: 20), // White text for contrast
+      iconTheme: IconThemeData(color: Colors.white),
+      titleTextStyle: TextStyle(color: Colors.white, fontSize: 20),
     ),
     textTheme: const TextTheme(
       titleLarge: TextStyle(
           color: Colors.orange, fontSize: 20, fontWeight: FontWeight.bold),
       titleMedium: TextStyle(
-          color: Colors.green, fontSize: 16, fontWeight: FontWeight.bold),
+          color: Colors.orange, fontSize: 16, fontWeight: FontWeight.bold),
       bodyLarge: TextStyle(
-          color: Colors.brown,
-          fontSize: 16,
-          fontWeight: FontWeight.bold), // Use brown for text
+          color: Colors.black, fontSize: 14, fontWeight: FontWeight.normal),
       bodyMedium: TextStyle(color: Colors.grey, fontSize: 14),
-      // Use green for secondary text
     ),
-    iconTheme: const IconThemeData(color: Colors.red), // Use red for icons
+    iconTheme: const IconThemeData(color: Colors.orange),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      selectedItemColor: Colors.orange, // Use primary color for selected items
-      unselectedItemColor: Colors.grey, // Retain grey for unselected items
+      selectedItemColor: Colors.orange,
+      unselectedItemColor: Colors.grey,
     ),
     cardTheme: CardTheme(
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      color: Colors.white, // Use white for card background
+      color: Colors.white,
     ),
     inputDecorationTheme: InputDecorationTheme(
       fillColor: Colors.grey[200],
@@ -42,7 +38,7 @@ ThemeData buildAppTheme() {
       ),
     ),
     buttonTheme: const ButtonThemeData(
-      buttonColor: Colors.green, // Use green for buttons
+      buttonColor: Colors.green,
       textTheme: ButtonTextTheme.primary,
     ),
   );

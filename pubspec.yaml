@@ -39,6 +39,7 @@ dependencies:
   provider: ^6.1.2
   google_fonts: ^6.2.1
   shared_preferences: ^2.2.3
+  flutter_native_splash: ^2.4.0
   
 
 

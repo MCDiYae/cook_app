@@ -3,7 +3,7 @@
       "id": "1",
       "title": "Spaghetti Carbonara",
       "imageUrl": "assets/images/spaghetti_carbonara.jpg",
-      "categories": ["Italian", "Western","trend"],
+      "categories": ["Italian", "trend"],
       "ingredients": [
           "Spaghetti",
           "Eggs",
@@ -43,7 +43,7 @@
       "id": "3",
       "title": "Chocolate Cake",
       "imageUrl": "assets/images/chocolate_cake.jpg",
-      "categories": ["Desserts","trend"],
+      "categories": ["Desserts"],
       "ingredients": [
           "Flour",
           "Cocoa powder",
@@ -278,7 +278,7 @@
     "id": "14",
     "title": "Chicken Teriyaki",
     "imageUrl": "assets/images/chicken_teriyaki.jpg",
-    "categories": ["Asian"],
+    "categories": ["Asian","trend"],
     "ingredients": [
         "Chicken thighs",
         "Soy sauce",
@@ -327,7 +327,7 @@
     "id": "16",
     "title": "Cheesecake",
     "imageUrl": "assets/images/cheesecake.jpg",
-    "categories": ["Desserts"],
+    "categories": ["Desserts","trend"],
     "ingredients": [
         "Cream cheese",
         "Graham crackers",

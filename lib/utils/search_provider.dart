@@ -14,24 +14,46 @@ class RecipeProviderSearch extends ChangeNotifier {
     final String response =
         await rootBundle.loadString('assets/data/recipes.json');
     _allRecipes = json.decode(response);
-    _filteredRecipes = _allRecipes;
+    _updateFilteredRecipes();
     notifyListeners();
   }
 
   void filterRecipes(String query) {
     _searchQuery = query;
-    if (query.isEmpty) {
-      _filteredRecipes = _allRecipes;
-    } else {
+    _updateFilteredRecipes();
+    notifyListeners();
+  }
+
+  void _updateFilteredRecipes() {
+    if (_searchQuery.isNotEmpty) {
+      // Show all recipes that match the query
       _filteredRecipes = _allRecipes
           .where((recipe) =>
-              recipe['title'].toLowerCase().contains(query.toLowerCase()) ||
+              recipe['title']
+                  .toLowerCase()
+                  .contains(_searchQuery.toLowerCase()) ||
               (recipe['categories'] as List<dynamic>).any((category) => category
                   .toString()
                   .toLowerCase()
-                  .contains(query.toLowerCase())))
+                  .contains(_searchQuery.toLowerCase())))
+          .toList();
+    } else {
+      // Show only trending recipes when there's no query
+      _filteredRecipes = _allRecipes
+          .where((recipe) =>
+              (recipe['categories'] as List<dynamic>).contains('trend'))
           .toList();
     }
-    notifyListeners();
+  }
+
+  List<dynamic> getTrendingRecipes() {
+    return _allRecipes
+        .where((recipe) =>
+            (recipe['categories'] as List<dynamic>).contains('trend'))
+        .toList();
+  }
+
+  List<dynamic> getAllRecipes() {
+    return _allRecipes;
   }
 }
