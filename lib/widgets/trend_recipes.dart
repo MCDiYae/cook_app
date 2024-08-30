@@ -25,6 +25,8 @@ class TrendRecipesGrid extends StatelessWidget {
             .map((json) => Recipe.fromJson(json))
             .toList();
 
+    final screenWidth = MediaQuery.of(context).size.width;
+    final crossAxisCount = screenWidth > 600 ? 4 : 2;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -36,8 +38,8 @@ class TrendRecipesGrid extends StatelessWidget {
         GridView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: crossAxisCount,
             childAspectRatio: 0.75,
             crossAxisSpacing: 10,
             mainAxisSpacing: 10,

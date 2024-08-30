@@ -38,10 +38,12 @@ class CategoryPage extends StatelessWidget {
                 child: Text('No recipes found for this category'));
           } else {
             final recipes = snapshot.data!;
+            final screenWidth = MediaQuery.of(context).size.width;
+            final crossAxisCount = screenWidth > 600 ? 4 : 2;
             return GridView.builder(
               padding: const EdgeInsets.all(16),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: crossAxisCount,
                 childAspectRatio: 0.75,
                 crossAxisSpacing: 10,
                 mainAxisSpacing: 10,
@@ -50,16 +52,16 @@ class CategoryPage extends StatelessWidget {
               itemBuilder: (context, index) {
                 final recipe = recipes[index];
                 return GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => RecipePage(recipe: recipe),
-                      ),
-                    );
-                  },
-                  child: RecipeCard(title: recipe.title, imageUrl: recipe.imageUrl)
-                );
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => RecipePage(recipe: recipe),
+                        ),
+                      );
+                    },
+                    child: RecipeCard(
+                        title: recipe.title, imageUrl: recipe.imageUrl));
               },
             );
           }
